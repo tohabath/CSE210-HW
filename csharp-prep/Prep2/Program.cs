@@ -7,33 +7,33 @@ class Program
     {
         Console.Write("Input course grade percentage: ");
         string courseGradeInput = Console.ReadLine();
-        int courseGradeNumber = int.Parse(courseGradeInput);
-        string courseGradeOutput = "";
-        if (courseGradeNumber >= 90 )
+        int number = int.Parse(courseGradeInput);
+        string letter = "";
+        if (number >= 90 )
         {
-            courseGradeOutput = "A";
+            letter = "A";
         }
-        else if (courseGradeNumber >= 80)
+        else if (number >= 80)
         {
-            courseGradeOutput = "B";
+            letter = "B";
         }
-        else if (courseGradeNumber >= 70)
+        else if (number >= 70)
         {
-            courseGradeOutput = "C";
+            letter = "C";
         }
-        else if (courseGradeNumber >= 60)
+        else if (number >= 60)
         {
-            courseGradeOutput = "D";
+            letter = "D";
         }
         else
         {
-            courseGradeOutput = "F";
+            letter = "F";
         }
         
         Console.WriteLine("");
-        Console.WriteLine($"Grade projected: {courseGradeOutput}");
+        Console.WriteLine($"Grade projected: {letter}");
         Console.WriteLine("");
-        if (courseGradeNumber >= 70)
+        if (number >= 70)
         {
             Console.WriteLine("Course: PASSED");
         }
