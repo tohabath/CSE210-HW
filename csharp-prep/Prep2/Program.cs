@@ -35,11 +35,11 @@ class Program
         Console.WriteLine("");
         if (number >= 70)
         {
-            Console.WriteLine("Course: PASSED");
+            Console.WriteLine("Course: PASSED. Good job, student.");
         }
         else
         {
-            Console.WriteLine("Course: FAILED");
+            Console.WriteLine("Course: FAILED. You will do better later.");
         }
     }
 }
