@@ -9,7 +9,7 @@ public class Journal
     //ATTR PROMPTS
     public List<string> thePrompts = new List<string>
     {
-        "Who was the most interesting person I interacted with today?","What was the best part of my day?","How did I see the hand of the Lord in my life today?","What was the strongest emotion I felt today?","If I had one thing I could do over today, what would it be?"
+        "Who was the most interesting person I interacted with today?","What was the best part of my day?","How did I see the hand of the Lord in my life today?","What was the strongest emotion I felt today?","If I had one thing I could do over today, what would it be?","Write a poem to describe your day.","Tell me about your outfit!","What was the most necessary thing to have gotten done today? Where you able to finish it?","Try to remember one thing that happened while you were online. Describe it, and how it made you feel.","What is your current hobby?","What was one insight you discovered during scripture study?"
     };
     public string prompt;
     public Random promptRandomizer = new();

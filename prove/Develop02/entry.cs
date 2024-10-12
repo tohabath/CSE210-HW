@@ -9,7 +9,7 @@ public class Entry
     //Methods
     public string NameEntry(string thePrompt, string theContent)
     {
-        theDate = currentDateTime.ToString();
+        theDate = currentDateTime.ToShortDateString();
         string fullEntry = $"{theDate}\n“{thePrompt}”\nYour response: {theContent}";
         System.Console.WriteLine($"\n{fullEntry}\n");
         return fullEntry;
