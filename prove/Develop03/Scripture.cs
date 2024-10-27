@@ -43,12 +43,12 @@ public class Scripture
         }
         maxContent = maxContent - 1;
         
-        if (maxVolitileContent < maxContent)
+        if (maxContent - 1 == maxVolitileContent)
         {
-            if (maxContent - 1 == maxVolitileContent)
-            {
-                System.Console.WriteLine("\nWARNING: Reset required. Next attempt will cause a crash!");
-            }
+            System.Console.WriteLine("\nMemorization complete! Reset to continue.");
+        }
+        else if (maxVolitileContent < maxContent)
+        {
             randomNumber = rnd.Next(0, maxContent);
 
             containsChar = Content.getVolContent()[randomNumber].Contains("_");

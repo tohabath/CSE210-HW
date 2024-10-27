@@ -53,15 +53,20 @@ class Program
                 Content.ResetVolatile();
             } else if (userInput == "3")
             {
+                System.Console.WriteLine("\nTry your hand at reciting the scripture passage by typing it! No cheating!");
                 System.Console.Write("\n> ");
                 userInput = Console.ReadLine();
                 if (userInput == thePassage)
                 {
-                    System.Console.WriteLine("\n\nWell done!");
+                    System.Console.WriteLine("\n\nWell done! You’ve mastered it!");
+                }
+                if (thePassage.Contains(userInput))
+                {
+                    System.Console.WriteLine("\n\nYou’re getting there! Try again!");
                 }
                 else
                 {
-                    System.Console.WriteLine("\n\nTry again!");
+                    System.Console.WriteLine("\n\nNot even close. Practice some more!");
                 }
             }
             else
