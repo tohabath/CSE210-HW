@@ -10,5 +10,9 @@ class Program
 
         myBin.ModifyQuantity(+6);
         System.Console.WriteLine(myBin.CountValue());
+
+        
+
+
     }
 }

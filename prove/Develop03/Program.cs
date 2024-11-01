@@ -26,8 +26,6 @@ class Program
         string theReference = referenceClass.DisplayReference();
         string theContent = "";
 
-        Content contentClass = new(thePassage);
-
         Scripture scriptureClass = new(theReference, theContent);
 
         //Functions
