@@ -37,6 +37,8 @@ class Program
             }
             else if (userInput == "4")
             {
+                Console.Clear();
+                System.Console.WriteLine("Thank you, come again!");
                 _Continue = false;
             }
             else
