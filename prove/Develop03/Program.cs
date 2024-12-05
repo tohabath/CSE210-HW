@@ -24,9 +24,10 @@ class Program
         Reference referenceClass = new(book, chapter, startVerse, endVerse);
 
         string theReference = referenceClass.DisplayReference();
-        string theContent = "";
 
-        Scripture scriptureClass = new(theReference, theContent);
+        Content contentClass = new(thePassage);
+
+        Scripture scriptureClass = new(theReference, thePassage);
 
         //Functions
 
