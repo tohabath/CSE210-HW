@@ -2,7 +2,7 @@ public class Stats {
     //ATTR
     private int _Health;
     private int _Damage;
-    private bool _Status;
+    private bool _Status = true;
     //METH
     public int GetHealth()
     {
@@ -30,9 +30,10 @@ public class Stats {
     }
     public virtual void TakeDamage(int damage)
     {
-        _Health = _Health - damage;
-        if (_Health <= 0)
+        SetHealth(GetHealth() - damage);
+        if (GetHealth() <= 0)
         {
+            SetStatus(false);
             Die();
         }
     }

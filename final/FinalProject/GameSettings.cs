@@ -2,10 +2,15 @@ using System.Dynamic;
 
 public class GameSettings {
     //ATTR
+    private List<string> _ProblemSet = new();
     private string _Difficulty;
     private string _Type;
     private int _Table;
     //METH
+    public List<string> GetProblemSet()
+    {
+        return _ProblemSet;
+    }
     public string GetDifficulty()
     {
         return _Difficulty;
