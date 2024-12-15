@@ -22,7 +22,7 @@ class Program
             problem.GetProblemSet().Clear();
             problem.BuildProblemSet(settings.GetTable(), settings.GetProblemType());
             story.DetermineRounds(settings.GetDifficulty());
-            while (story.GetRounds() > 0)
+            while (story.GetRounds() > 0 && player.GetStatus())
             {
                 story.GenerateStory();
                 bool punishment = choice.HandleChoice(settings.GetDifficulty());
