@@ -92,7 +92,7 @@ public class Problem : GameSettings {
         {
             for (int i = 1; i < 13; i++)
             {
-                GetProblemSet().Add($"{table} - {i} = ");
+                GetProblemSet().Add($"{i} - {table} = ");
             }
         }
     }
@@ -102,7 +102,7 @@ public class Problem : GameSettings {
         {
             for (int i = 1; i < 13; i++)
             {
-                if (GetProblem().Contains($"{i}") && GetProblem().Contains($"{table}"))
+                if (GetProblem() == $"{table} x {i} = ")
                 {
                     SetAnswer(table * i);
                 }
@@ -112,7 +112,7 @@ public class Problem : GameSettings {
         {
             for (int i = 1; i < 13; i++)
             {
-                if (GetProblem().Contains($"{i}") && GetProblem().Contains($"{table}"))
+                if (GetProblem() == $"{i} / {table} = ")
                 {
                     SetAnswer(Math.Round((double)i / table, 2));
                 }
@@ -122,7 +122,7 @@ public class Problem : GameSettings {
         {
             for (int i = 1; i < 13; i++)
             {
-                if (GetProblem().Contains($"{i}") && GetProblem().Contains($"{table}"))
+                if (GetProblem() == $"{table} + {i} = ")
                 {
                     SetAnswer(table + i);
                 }
@@ -132,9 +132,9 @@ public class Problem : GameSettings {
         {
             for (int i = 1; i < 13; i++)
             {
-                if (GetProblem().Contains($"{i}") && GetProblem().Contains($"{table}"))
+                if (GetProblem() == $"{i} - {table} = ")
                 {
-                    SetAnswer(table - i);
+                    SetAnswer(i - table);
                 }
             }
         }

@@ -19,6 +19,7 @@ class Program
         {
             problem.SetScore(0);
             settings.HandleSettings();
+            problem.GetProblemSet().Clear();
             problem.BuildProblemSet(settings.GetTable(), settings.GetProblemType());
             story.DetermineRounds(settings.GetDifficulty());
             while (story.GetRounds() > 0)
@@ -57,7 +58,7 @@ class Program
                 }
             }
             score.HandleScoring(problem.GetScore(), player.GetHealth());
-            System.Console.WriteLine("Play again? (y/n): ");
+            System.Console.Write("Play again? (y/n): ");
             string playerInput = Console.ReadLine();
             if (playerInput == "n")
             {

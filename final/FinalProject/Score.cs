@@ -33,10 +33,10 @@ public class Score {
     }
     public void PresentScore()
     {
-        System.Console.WriteLine($"You win!\n\nYou scored {GetScore()} points.");
+        System.Console.WriteLine($"\n\nYOU WIN!\n\nYou scored {GetScore()} points.");
         if(GetScore() > GetHighScore())
         {
-            System.Console.WriteLine("A new record!");
+            System.Console.WriteLine("A new record!\n");
             SetHighScore(GetScore());
         }
         SetScore(0);
