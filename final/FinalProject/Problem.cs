@@ -3,22 +3,27 @@ using System.Diagnostics;
 public class Problem : GameSettings {
     //ATTR
     private string _Problem;
-    private int _Answer;
+    private int _Score;
+    private double _Answer;
     private bool _Correct;
     private int _Penalty;
     private int _Multiplier;
     private Stopwatch _Stopwatch = new();
-    private TimeSpan _TimeLimit;
+    private double _TimeLimit;
     private Random rnd = new();
     //METH
     public Random GetRandom()
     {
         return rnd;
     }
+    public int GetScore()
+    {
+        return _Score;
+    }
     public string GetProblem(){
         return _Problem;
     }
-    public int GetAnswer(){
+    public double GetAnswer(){
         return _Answer;
     }
     public bool GetCorrect(){
@@ -34,13 +39,17 @@ public class Problem : GameSettings {
     public Stopwatch GetStopwatch(){
         return _Stopwatch;
     }
-    public TimeSpan GetTimeLimit(){
+    public double GetTimeLimit(){
         return _TimeLimit;
+    }
+    public void SetScore(int score)
+    {
+        _Score = score;
     }
     public void SetProblem(string problem){
         _Problem = problem;
     }
-    public void SetAnswer(int answer){
+    public void SetAnswer(double answer){
         _Answer = answer;
     }
     public void SetCorrect(bool correct){
@@ -53,8 +62,8 @@ public class Problem : GameSettings {
     {
         _Multiplier = multiplier;
     }
-    public void SetTimeLimit(int time){
-        _TimeLimit = TimeSpan.FromSeconds(time);
+    public void SetTimeLimit(double time){
+        _TimeLimit = time;
     }
     public void BuildProblemSet(int table, string type)
     {
@@ -69,7 +78,7 @@ public class Problem : GameSettings {
         {
             for (int i = 1; i < 13; i++)
             {
-                GetProblemSet().Add($"{table} / {i} = ");
+                GetProblemSet().Add($"{i} / {table} = ");
             }
         }
         else if (type == "addition")
@@ -87,11 +96,9 @@ public class Problem : GameSettings {
             }
         }
     }
-    public void HandleProblem(int table)
+    public void CreateProblem(int table)
     {
-        int problemSelection = GetRandom().Next(1, GetProblemSet().Count);
-        SetProblem(GetProblemSet()[problemSelection]);
-        if (GetProblem().Contains("X"))
+        if (GetProblem().Contains("x"))
         {
             for (int i = 1; i < 13; i++)
             {
@@ -107,7 +114,7 @@ public class Problem : GameSettings {
             {
                 if (GetProblem().Contains($"{i}") && GetProblem().Contains($"{table}"))
                 {
-                    SetAnswer(table / i);
+                    SetAnswer(Math.Round((double)i / table, 2));
                 }
             }
         }
@@ -131,70 +138,56 @@ public class Problem : GameSettings {
                 }
             }
         }
+    }
+    public void HandleProblem(int table, string difficulty)
+    {
+        if (difficulty == "easy")
+            {
+                SetTimeLimit(5);
+            }
+        else if (difficulty == "medium")
+        {
+            SetTimeLimit(4);
+        }
+        else if (difficulty == "hard")
+        {
+            SetTimeLimit(3);
+        }
+        int problemSelection = GetRandom().Next(1, GetProblemSet().Count);
+        SetProblem(GetProblemSet()[problemSelection]);
+        CreateProblem(table);
         System.Console.WriteLine(GetProblem());
         GetStopwatch().Start();
         Console.Write("> ");
-        int response = int.Parse(Console.ReadLine());
+        double response = double.Parse(Console.ReadLine());
         GetStopwatch().Stop();
+        double TimePassed = GetStopwatch().Elapsed.TotalSeconds;
         if (response == GetAnswer())
         {
-            System.Console.WriteLine("Correct! You deal damage!");
+            SetScore(GetScore() + 5);
             SetCorrect(true);
-            TimeSpan TimePassed = GetStopwatch().Elapsed;
-            if (GetDifficulty() == "easy")
+            if (TimePassed <= GetTimeLimit())
             {
-                SetTimeLimit(15);
-                if (TimePassed <= GetTimeLimit())
-                {
-                    SetMultiplier(4);
-                }
+                SetMultiplier(GetRandom().Next(2,5));
+                SetScore(GetScore() + 3);
             }
-            else if (GetDifficulty() == "medium")
+            else if (TimePassed > GetTimeLimit())
             {
-                SetTimeLimit(10);
-                if (TimePassed <= GetTimeLimit())
-                {
-                    SetMultiplier(3);
-                }
-            }
-            else if (GetDifficulty() == "hard")
-            {
-                SetTimeLimit(5);
-                if (TimePassed <= GetTimeLimit())
-                {
-                    SetMultiplier(2);
-                }
+                SetMultiplier(0);
             }
         }
         else
         {
-            System.Console.WriteLine("Wrong! You take damage!");
+            if (GetScore() >= 0)
+            {
+                SetScore(GetScore() - 3);
+            }
+            else
+            {
+                SetScore(0);
+            }
             SetCorrect(false);
-            TimeSpan TimePassed = GetStopwatch().Elapsed;
-            if (GetDifficulty() == "easy")
-            {
-                SetTimeLimit(15);
-                if (TimePassed <= GetTimeLimit())
-                {
-                    SetMultiplier(4);
-                }
-            }
-            else if (GetDifficulty() == "medium")
-            {
-                SetTimeLimit(10);
-                if (TimePassed <= GetTimeLimit())
-                {
-                    SetMultiplier(3);
-                }
-            }
-            else if (GetDifficulty() == "hard")
-            {
-                SetTimeLimit(5);
-                if (TimePassed <= GetTimeLimit())
-                {
-                    SetMultiplier(2);
-                }
-            }
         }
+        GetStopwatch().Reset();
     }
 }

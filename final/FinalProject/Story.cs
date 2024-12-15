@@ -1,3 +1,5 @@
+using System.Xml;
+
 public class Story : GameSettings {
     //ATTR
     private int _Rounds;
@@ -32,8 +34,8 @@ public class Story : GameSettings {
     }
     public void GenerateStory()
     {
+        System.Console.WriteLine();
         int randomStory = GetRandom().Next(1,3);
-
         if (randomStory == 1)
         {
             System.Console.WriteLine("You are skulking around in a treacherous dungeon.");

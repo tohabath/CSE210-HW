@@ -3,6 +3,13 @@ public class Stats {
     private int _Health;
     private int _Damage;
     private bool _Status = true;
+    //CONST
+    public Stats(int health, int damage, bool status)
+    {
+        _Health = health;
+        _Damage = damage;
+        _Status = status;
+    }
     //METH
     public int GetHealth()
     {
