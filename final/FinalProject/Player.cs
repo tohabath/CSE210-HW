@@ -1,6 +1,5 @@
 public class Player : Stats {
     //ATTR
-    private bool _GameOver = false;
     private static int _Health;
     private static int _Damage;
     private static bool _Status;
@@ -13,14 +12,6 @@ public class Player : Stats {
         SetStatus(true);
     }
     //METH
-    public bool GetGameOver()
-    {
-        return _GameOver;
-    }
-    public void SetGameOver(bool check)
-    {
-        _GameOver = check;
-    }
     public void TakeHealth(int healing)
     {
         SetHealth(GetHealth() + healing);
@@ -44,7 +35,6 @@ public class Player : Stats {
     {
         System.Console.WriteLine();
         System.Console.WriteLine("You were defeated!");
-        SetGameOver(true);
         Console.Write("(Press ENTER to continue) ");
         Console.ReadLine();
     }

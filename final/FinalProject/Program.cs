@@ -48,11 +48,7 @@ class Program
                         player.TakeDamage(enemies.GetDamage());
                     }
                 }
-                if (player.GetGameOver())
-                {
-                    RunningProgram = false;
-                }
-                else if (player.GetHealth() < 5)
+                if (player.GetHealth() < 5)
                 {
                     player.TakeHealth(6);
                 }
