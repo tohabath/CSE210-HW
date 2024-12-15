@@ -12,6 +12,12 @@ public class Player : Stats {
         SetStatus(true);
     }
     //METH
+    public void Rebirth()
+    {
+        SetHealth(12);
+        SetDamage(3);
+        SetStatus(true);
+    }
     public void TakeHealth(int healing)
     {
         SetHealth(GetHealth() + healing);

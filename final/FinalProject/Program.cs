@@ -46,6 +46,7 @@ class Program
                     else
                     {
                         player.TakeDamage(enemies.GetDamage());
+                        enemies.SetDamage(enemies.GetDamage() + 1);
                     }
                 }
                 if (player.GetHealth() < 5)
@@ -59,6 +60,10 @@ class Program
             if (playerInput == "n")
             {
                 RunningProgram = false;
+            }
+            else
+            {
+                player.Rebirth();
             }
         }
     }
