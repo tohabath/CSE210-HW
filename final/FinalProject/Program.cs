@@ -57,7 +57,7 @@ class Program
                     player.TakeHealth(6);
                 }
             }
-            score.HandleScoring(problem.GetScore(), player.GetHealth());
+            score.HandleScoring(problem.GetScore(), player.GetHealth(), player.GetStatus());
             System.Console.Write("Play again? (y/n): ");
             string playerInput = Console.ReadLine();
             if (playerInput == "n")

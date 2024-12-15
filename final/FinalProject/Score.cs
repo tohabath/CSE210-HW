@@ -19,7 +19,7 @@ public class Score {
     {
         _HighScore = score;
     }
-    public void HandleScoring(int score, int health)
+    public void HandleScoring(int score, int health, bool status)
     {
         if (score + health < 0)
         {
@@ -29,11 +29,21 @@ public class Score {
         {
             SetScore(score + health);
         }
-        PresentScore();
+        PresentScore(status);
     }
-    public void PresentScore()
+    public void PresentScore(bool status)
     {
-        System.Console.WriteLine($"\n\nYOU WIN!\n\nYou scored {GetScore()} points.");
+        System.Console.WriteLine();
+        if (status)
+        {
+            System.Console.WriteLine("YOU WIN!");
+        }
+        else
+        {
+            System.Console.WriteLine("GAME OVER");
+        }
+        System.Console.WriteLine();
+        System.Console.WriteLine($"You scored {GetScore()} points.");
         if(GetScore() > GetHighScore())
         {
             System.Console.WriteLine("A new record!\n");
